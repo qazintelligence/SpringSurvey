@@ -8,5 +8,6 @@ public interface UserServiceInterface {
     List<User> getAll();
     User getById(int id);
     User create(User user);
+    List<User> getBySurname(String surname);
 
 }
