@@ -18,21 +18,21 @@ public class UserService implements UserServiceInterface {
 
     @Override
     public List<User> getAll() {
-        return null;
+        return repo.findAll();
     }
 
     @Override
     public User getById(int id) {
-        return null;
+        return repo.findById(id).orElse(null);
     }
 
     @Override
     public User create(User user) {
-        return null;
+        return repo.save(user);
     }
 
     @Override
     public List<User> getBySurname(String surname) {
-        return null;
+        return repo.findBySurname(surname);
     }
 }
