@@ -33,20 +33,6 @@ public class SurveyService implements SurveyServiceInterface {
     public Survey participateSurvey(int surveyId, List<Option> selectedOptions) {
         Survey survey = repo.findById(surveyId).orElse(null);
 
-        for (Option selectedOption : selectedOptions) {
-            boolean found = false;
-            for (Option option : survey.getOptions()) {
-                if (option.getOption_id() == selectedOption.getOption_id()) {
-                    option.setCount(option.getCount() + 1);
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) {
-                throw new RuntimeException("Option with ID " + selectedOption.getId() + " not found in survey");
-            }
-        }
-        survey.setCompleted(true);
         return repo.save(survey);
     }
 }

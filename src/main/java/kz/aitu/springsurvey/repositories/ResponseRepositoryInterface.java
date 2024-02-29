@@ -1,23 +1,7 @@
 package kz.aitu.springsurvey.repositories;
 
-import kz.aitu.springsurvey.models.Question;
+import kz.aitu.springsurvey.models.Survey;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
-public interface QuestionRepositoryInterface {
-
-    // Method to save a question
-    void saveQuestion(Question question);
-
-    // Method to update a question
-    void updateQuestion(Question question);
-
-    // Method to delete a question
-    void deleteQuestion(Question question);
-
-    // Method to find a question by its ID
-    Question findQuestionById(int id);
-
-    // Method to get all questions
-    List<Question> getAllQuestions();
+public interface ResponseRepositoryInterface extends JpaRepository<Survey, Integer> {
 }
