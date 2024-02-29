@@ -2,10 +2,14 @@ package kz.aitu.springsurvey.controllers;
 
 import kz.aitu.springsurvey.models.User;
 import kz.aitu.springsurvey.models.Survey;
+import kz.aitu.springsurvey.models.Option;
+import kz.aitu.springsurvey.models.Response;
 import kz.aitu.springsurvey.services.interfaces.SurveyServiceInterface;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("surveys")
@@ -31,5 +35,14 @@ public class SurveyController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
         return new ResponseEntity<>(survey, HttpStatus.OK);
+    }
+
+    @PostMapping("/{survey_id}")
+    public ResponseEntity<Survey> participateSurvey(@PathVariable("survey_id") int id, @RequestBody List<Option> selectedOptions) {
+        Survey participatedSurvey = service.participateSurvey(id, selectedOptions);
+        if (participatedSurvey == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(participatedSurvey, HttpStatus.OK);
     }
 }
