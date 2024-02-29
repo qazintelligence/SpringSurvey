@@ -1,5 +1,9 @@
 package kz.aitu.springsurvey.repositories;
 
+import kz.aitu.springsurvey.models.Question;
+
+import java.util.List;
+
 public interface QuestionRepositoryInterface {
 
     // Method to save a question
