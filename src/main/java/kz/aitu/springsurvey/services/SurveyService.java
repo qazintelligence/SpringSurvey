@@ -29,6 +29,10 @@ public class SurveyService implements SurveyServiceInterface {
         return repo.findById(id).orElse(null);
     }
 
+    public Survey saveSurvey(Survey survey) {
+        return repo.save(survey);
+    }
+
     @Override
     public Survey participateSurvey(int surveyId, List<Option> selectedOptions) {
         Survey survey = repo.findById(surveyId).orElse(null);

@@ -22,7 +22,7 @@ public class Survey {
     private boolean completed;
 
     @OneToMany(mappedBy = "survey", cascade = CascadeType.ALL)
-    private List<Option> Options = new ArrayList<>();
+    private List<Question> questions = new ArrayList<>();
 
     public Survey () {}
     public Survey(int user_id, String title) {
@@ -31,11 +31,11 @@ public class Survey {
         this.completed = false;
     }
 
-    public List<Option> getOptions() {
-        return Options;
+    public List<Question> getQuestions() {
+        return questions;
     }
 
-    public void setOptions(List<Option> selectedOptions) {
-        this.Options = selectedOptions;
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
     }
 }

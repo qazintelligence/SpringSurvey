@@ -9,4 +9,6 @@ public interface SurveyServiceInterface {
     Survey getById(int id);
 
     Survey participateSurvey (int surveyId, List<Option> selectedOptions);
+
+    Survey saveSurvey(Survey survey);
 }

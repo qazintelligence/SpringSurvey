@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -18,4 +21,7 @@ public class Question {
     private int question_id;
     private int survey_id;
     private String text;
+
+    @OneToMany(mappedBy = "questions", cascade = CascadeType.ALL)
+    private List<Option> options = new ArrayList<>();
 }

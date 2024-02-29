@@ -3,8 +3,10 @@ package kz.aitu.springsurvey.controllers;
 import kz.aitu.springsurvey.models.User;
 import kz.aitu.springsurvey.models.Survey;
 import kz.aitu.springsurvey.models.Option;
+import kz.aitu.springsurvey.models.Question;
 import kz.aitu.springsurvey.models.Response;
 import kz.aitu.springsurvey.services.interfaces.SurveyServiceInterface;
+import org.aspectj.lang.annotation.SuppressAjWarnings;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,10 +25,32 @@ public class SurveyController {
     @PostMapping("/createSurvey")
     public ResponseEntity<Survey> createSurvey (@RequestBody Survey survey){
         Survey createdSurvey = service.createSurvey(survey);
+
         if(createdSurvey == null)
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         return new ResponseEntity<>(createdSurvey, HttpStatus.CREATED);
     }
+    @PostMapping("/createSurvey/addQuestions")
+    public ResponseEntity<?> addQuestionsToSurvey(
+            @RequestBody int surveyId,
+            @RequestBody List<Question> questions,
+            @RequestBody List<Option> options) {
+
+        Survey survey = service.getById(surveyId);
+
+        if (survey == null) {
+            return ResponseEntity.notFound().build(); }
+
+
+        for (Question question : questions) {
+            survey.getQuestions().add(question);
+        }
+
+        service.saveSurvey(survey);
+
+        return ResponseEntity.ok().build();
+    }
+
 
     @GetMapping("/{survey_id}")
     public ResponseEntity<Survey> getById(@PathVariable("survey_id") int id){
