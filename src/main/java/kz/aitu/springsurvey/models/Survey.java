@@ -12,9 +12,9 @@ import java.util.List;
 public class Survey {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int surveyId;
-    private int userID;
-    private String surveyTitle;
+    private int survey_id;
+    private int user_id;
+    private String title;
 
 
 }
