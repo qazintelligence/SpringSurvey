@@ -30,26 +30,8 @@ public class SurveyController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         return new ResponseEntity<>(createdSurvey, HttpStatus.CREATED);
     }
-    @PostMapping("/createSurvey/addQuestions")
-    public ResponseEntity<?> addQuestionsToSurvey(
-            @RequestBody int surveyId,
-            @RequestBody List<Question> questions,
-            @RequestBody List<Option> options) {
-
-        Survey survey = service.getById(surveyId);
-
-        if (survey == null) {
-            return ResponseEntity.notFound().build(); }
 
 
-        for (Question question : questions) {
-            survey.getQuestions().add(question);
-        }
-
-        service.saveSurvey(survey);
-
-        return ResponseEntity.ok().build();
-    }
 
 
     @GetMapping("/{survey_id}")

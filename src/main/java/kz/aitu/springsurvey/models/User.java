@@ -13,5 +13,6 @@ public class User { // изменить под наш сервер
     private String name;
     private String surname; //вроде юзернейм еще был у нас
     private String username;
+    private String email;
     private String password;  //тут по идее тоже под тейбл подстраивается
 }

@@ -17,4 +17,11 @@ public class Option {
     private int option_id;
     private String text;
     private int question_id;
+
+    public Option() {}
+    public Option(int option_id, String text, int question_id){
+        this.option_id = option_id;
+        this.text = text;
+        this.question_id = question_id;
+    }
 }

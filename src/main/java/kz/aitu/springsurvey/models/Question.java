@@ -22,6 +22,5 @@ public class Question {
     private int survey_id;
     private String text;
 
-    @OneToMany(mappedBy = "questions", cascade = CascadeType.ALL)
-    private List<Option> options = new ArrayList<>();
+
 }
